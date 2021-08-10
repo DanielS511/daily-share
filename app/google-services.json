@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "900714419341",
+    "project_id": "instafire-fa84b",
+    "storage_bucket": "instafire-fa84b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900714419341:android:6dd4acd4c1f5acac913ec4",
+        "android_client_info": {
+          "package_name": "com.example.dailyshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900714419341-0pdegtvdv0mh4ralnlhqi0r4vrp93jja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfccwYHirAQ1FNKzh8ye5LfWQU-oObL8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900714419341-0pdegtvdv0mh4ralnlhqi0r4vrp93jja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900714419341:android:b6fa06e328717013913ec4",
+        "android_client_info": {
+          "package_name": "com.example.instafire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "900714419341-0pdegtvdv0mh4ralnlhqi0r4vrp93jja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfccwYHirAQ1FNKzh8ye5LfWQU-oObL8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "900714419341-0pdegtvdv0mh4ralnlhqi0r4vrp93jja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
