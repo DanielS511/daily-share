@@ -18,6 +18,8 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 //        Toast.makeText(baseContext,"log in", Toast.LENGTH_SHORT).show()
         val auth = Firebase.auth
+
+        //check if user has already signed in
         if (auth.currentUser != null){
             goPostActivity()
         }
@@ -25,15 +27,18 @@ class LoginActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
         val loginButt = findViewById<Button>(R.id.loginButt)
         loginButt.setOnClickListener {
+            // Don't let the user click login for more than one time
             loginButt.isEnabled = false
             val email = findViewById<EditText>(R.id.etEmail).text.toString()
             val password = findViewById<EditText>(R.id.etPassword).text.toString()
 
+            // Tell the user that either email or password is empty
             if (email.isBlank() || password.isBlank()){
                 Toast.makeText(this, "Email or Password is BLANK", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
+            // Try to sign in with password and email
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { taskId ->
                 loginButt.isEnabled = true
                 if (taskId.isSuccessful){

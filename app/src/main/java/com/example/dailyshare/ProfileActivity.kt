@@ -9,7 +9,10 @@ import android.view.Menu
 import android.view.MenuItem
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
+/*
+Profile activity is built on PostActivity
+However, it has a different menu which allows user to log out
+ */
 class ProfileActivity : PostActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
