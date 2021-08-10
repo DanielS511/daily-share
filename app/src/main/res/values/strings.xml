@@ -3,4 +3,8 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="name">Name</string>
+    <string name="relative_time">relative time</string>
+    <string name="image_to_share">Image to share</string>
+    <string name="description">Description</string>
 </resources>
