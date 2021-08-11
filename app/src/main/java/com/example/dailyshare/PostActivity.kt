@@ -1,17 +1,18 @@
 package com.example.dailyshare
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dailyshare.models.Post
 import com.example.dailyshare.models.User
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
@@ -24,6 +25,7 @@ open class PostActivity : AppCompatActivity() {
     private lateinit var posts : MutableList<Post>
     private lateinit var adapter: PostsAdapter
     private lateinit var rvPosts : RecyclerView
+
     private var signInUser : User? = null
 
     //find out who is the current user
@@ -40,6 +42,11 @@ open class PostActivity : AppCompatActivity() {
             }
     }
 
+    /*
+    Determine the posts is for post activity or profile activity
+    Then set up the posts
+     */
+    @SuppressLint("NotifyDataSetChanged")
     private fun setUpPosts(){
         //Set the list of posts
         posts = mutableListOf()
@@ -81,10 +88,33 @@ open class PostActivity : AppCompatActivity() {
             //update the recyclerView
             adapter.notifyDataSetChanged()
 
-//            for (post in postList){
-//                Log.i("PostActivity", "Post $post")
-//            }
+            for (post in postList){
+                Log.i("PostActivity", "Post $post")
+            }
         }
+    }
+
+    //Set up the floating action button to create post
+    fun createPost(view: View) {
+        val intent = Intent(this, CreatePostActivity::class.java)
+        startActivity(intent)
+    }
+
+    //Set up the option menu for post activity
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_posts, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //navigate the user to profile activity
+        if (item.itemId == R.id.menuProfile){
+            val intent = Intent(this, ProfileActivity::class.java)
+            intent.putExtra(EXTRA_USERNAME, signInUser?.username)
+            startActivity(intent)
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,20 +124,6 @@ open class PostActivity : AppCompatActivity() {
         firestoreDB =  Firebase.firestore
         findCurrentUser()
         setUpPosts()
-    }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_posts, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menuProfile){
-            val intent = Intent(this, ProfileActivity::class.java)
-            intent.putExtra(EXTRA_USERNAME, signInUser?.username)
-            startActivity(intent)
-        }
-
-        return super.onOptionsItemSelected(item)
     }
 }

@@ -7,4 +7,8 @@
     <string name="relative_time">relative time</string>
     <string name="image_to_share">Image to share</string>
     <string name="description">Description</string>
+    <string name="create_new_post">Create new post</string>
+    <string name="select_image">Select Image</string>
+    <string name="image_selected">Image Selected</string>
+    <string name="submit">Submit</string>
 </resources>
