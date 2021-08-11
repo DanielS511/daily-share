@@ -17,11 +17,14 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.FileProvider
+import com.example.dailyshare.models.Post
 import com.example.dailyshare.models.User
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.io.File
 
 private const val TAG = "CreatePostActivity"
@@ -35,6 +38,7 @@ class CreatePostActivity : AppCompatActivity() {
     private var submitTime : Int = 0
     private var signInUser : User? = null
     private lateinit var firestoreDB: FirebaseFirestore
+    private lateinit var storageReference: StorageReference
     private lateinit var photoFile : File
 
     private lateinit var buttSelectImage : Button
@@ -70,6 +74,7 @@ class CreatePostActivity : AppCompatActivity() {
                 return
             }
         }
+
         //check if user enter descriptions
         if (etDescription.text.isBlank()){
             if (submitTime < 1){
@@ -78,11 +83,44 @@ class CreatePostActivity : AppCompatActivity() {
                 return
             }
         }
+
         //check if we have a sign in user
         if (signInUser == null){
             Toast.makeText(this, "No sign in user", Toast.LENGTH_SHORT).show()
             return
         }
+        buttSubmit.isEnabled = false
+        val uploadUri = photoUri as Uri
+
+        //upload the photo to firebase storage
+        val photoRef = storageReference.child("image/${System.currentTimeMillis()}-photo.jpg")
+        photoRef.putFile(uploadUri)
+            .continueWithTask { photoUploadTask ->
+                Log.i(TAG, "upload bytes: $")
+                //get image url for the image
+                photoRef.downloadUrl
+            }.continueWithTask{ downloadUrlTask ->
+                //Create a post object with the image url and add it into the posts list
+                val post = Post(
+                    etDescription.text.toString(),
+                    downloadUrlTask.result.toString(),
+                    System.currentTimeMillis(),
+                    signInUser)
+                firestoreDB.collection("posts").add(post)
+            }.addOnCompleteListener { postCreationTask ->
+                buttSubmit.isEnabled = true
+                if (!postCreationTask.isSuccessful){
+                    Log.e(TAG, "Exception during syncing with Firestore")
+                    Toast.makeText(this, "Fail to save post", Toast.LENGTH_SHORT).show()
+                }else{
+                    etDescription.text.clear()
+                    ivImage.setImageResource(0)
+                    Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                    var postActivityIntent = Intent(this, PostActivity::class.java)
+                    startActivity(postActivityIntent)
+                    finish()
+                }
+            }
     }
 
     /*
@@ -109,6 +147,7 @@ class CreatePostActivity : AppCompatActivity() {
                 val imageTakerIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 photoFile = getPhotoFile(PHOTO_FILE_NAME)
                 val fileProvider = FileProvider.getUriForFile(this, "com.example.fileprovider", photoFile)
+                photoUri = fileProvider
                 imageTakerIntent.putExtra(MediaStore.EXTRA_OUTPUT,fileProvider)
                 if (imageTakerIntent.resolveActivity(packageManager) != null){
                     startActivityForResult(imageTakerIntent, TAKE_PHOTO_CODE)
@@ -145,6 +184,7 @@ class CreatePostActivity : AppCompatActivity() {
                 ivImage.visibility = View.VISIBLE
 
                 takenPhoto = BitmapFactory.decodeFile(photoFile.absolutePath)
+
                 ivImage.setImageBitmap(takenPhoto)
             }else{
                 Toast.makeText(this, "The user has canceled the photo taken", Toast.LENGTH_SHORT ).show()
@@ -161,6 +201,7 @@ class CreatePostActivity : AppCompatActivity() {
         buttSubmit = findViewById(R.id.buttSubmit)
         etDescription = findViewById(R.id.etDescription)
         firestoreDB =  Firebase.firestore
+        storageReference = FirebaseStorage.getInstance().reference
 
         buttSelectImage.visibility = View.VISIBLE
         ivImage.visibility = View.INVISIBLE
