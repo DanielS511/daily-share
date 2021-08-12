@@ -114,6 +114,12 @@ open class PostActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //navigate the user to weather activity
+        if (item.itemId == R.id.menuWeather){
+            val intent = Intent(this, WeatherActivity::class.java)
+            startActivity(intent)
+        }
+
         return super.onOptionsItemSelected(item)
     }
 

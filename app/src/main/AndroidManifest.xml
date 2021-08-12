@@ -11,16 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyShare">
+
         <provider
-            android:authorities="com.example.fileprovider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/fileprovider" />
         </provider>
+
         <activity
             android:name=".CreatePostActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WeatherActivity"
             android:exported="true" />
         <activity
             android:name=".ProfileActivity"

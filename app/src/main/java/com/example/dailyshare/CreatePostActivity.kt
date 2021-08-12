@@ -63,7 +63,7 @@ class CreatePostActivity : AppCompatActivity() {
     /*
     Onclick method for buttSubmit
     Alarm the user if he/she didn't enter description or image
-    Save the data to
+    Save the data to the firebase
      */
     fun submit( view: View){
         //check if user select a photo
@@ -113,9 +113,12 @@ class CreatePostActivity : AppCompatActivity() {
                     Log.e(TAG, "Exception during syncing with Firestore")
                     Toast.makeText(this, "Fail to save post", Toast.LENGTH_SHORT).show()
                 }else{
+                    //clear the description and image view
                     etDescription.text.clear()
                     ivImage.setImageResource(0)
+
                     Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+                    //navigate back to postActivity
                     var postActivityIntent = Intent(this, PostActivity::class.java)
                     startActivity(postActivityIntent)
                     finish()
