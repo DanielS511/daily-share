@@ -6,10 +6,13 @@
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_create_post.xml" value="0.2817028985507246" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_login.xml" value="0.2866847826086957" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_main.xml" value="0.2866847826086957" />
+        <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_note.xml" value="0.2767210144927536" />
+        <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_note_editor.xml" value="0.2767210144927536" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_post.xml" value="0.2866847826086957" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_profile.xml" value="0.2866847826086957" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_weather.xml" value="0.2767210144927536" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/post_item.xml" value="0.1" />
+        <entry key="..\:/Android/DailyShare/app/src/main/res/menu/menu_note.xml" value="0.359375" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/menu/menu_posts.xml" value="0.359375" />
       </map>
     </option>

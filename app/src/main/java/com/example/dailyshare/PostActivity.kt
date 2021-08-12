@@ -120,6 +120,12 @@ open class PostActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //navigate the user to note activity
+        if (item.itemId == R.id.menuNote){
+            val intent = Intent(this, NoteActivity::class.java)
+            startActivity(intent)
+        }
+
         return super.onOptionsItemSelected(item)
     }
 
