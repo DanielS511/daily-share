@@ -126,6 +126,12 @@ open class PostActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        //navigate to COVID activity
+        if (item.itemId == R.id.menuCOVID){
+            val intent = Intent(this, COVIDActivity::class.java)
+            startActivity(intent)
+        }
+
         return super.onOptionsItemSelected(item)
     }
 

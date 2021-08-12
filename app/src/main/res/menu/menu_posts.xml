@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/menuCOVID"
+        android:title="COVID-19"
+        app:showAsAction="collapseActionView" />
+    <item
         android:id="@+id/menuNote"
         android:icon="@drawable/ic_baseline_book_white"
         android:title="Note"
@@ -11,7 +15,7 @@
         android:id="@+id/menuWeather"
         android:icon="@drawable/ic_baseline_cloud_circle"
         android:title="Weather"
-        app:showAsAction="always" />
+        app:showAsAction="collapseActionView" />
     <item
         android:id="@+id/menuProfile"
         android:icon="@drawable/ic_baseline_person_white"
