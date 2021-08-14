@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dailyshare.adapters.PostsAdapter
 import com.example.dailyshare.models.Post
 import com.example.dailyshare.models.User
 import com.google.firebase.auth.ktx.auth

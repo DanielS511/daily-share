@@ -1,4 +1,4 @@
-package com.example.dailyshare
+package com.example.dailyshare.adapters
 /*
 This is the adapter to make posts appear on the recycleView
 A post as a view is represent by post_item.xml
@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.dailyshare.R
 import com.example.dailyshare.models.Post
 
 class PostsAdapter (val context: Context, val posts: List<Post>)

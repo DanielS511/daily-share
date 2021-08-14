@@ -6,4 +6,122 @@
     android:layout_height="match_parent"
     tools:context=".COVIDActivity">
 
+
+    <org.angmarch.views.NiceSpinner
+        android:id="@+id/spinnerStates"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:contentDescription="States "
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="@id/tvState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tvState"
+        app:layout_constraintTop_toTopOf="@id/tvState" />
+
+    <TextView
+        android:id="@+id/tvState"
+        android:layout_width="67dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="State"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rgStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvState">
+
+        <RadioButton
+            android:id="@+id/rbPositive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Positive" />
+
+        <RadioButton
+            android:id="@+id/rbNegative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Negative" />
+
+        <RadioButton
+            android:id="@+id/rbDeath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Death" />
+    </RadioGroup>
+
+    <com.robinhood.spark.SparkView
+        android:id="@+id/sparkviewCovidChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/rgTimeline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgStatus" />
+
+    <RadioGroup
+        android:id="@+id/rgTimeline"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tvDataLebal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Week" />
+
+        <RadioButton
+            android:id="@+id/rbMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Month" />
+
+        <RadioButton
+            android:id="@+id/rbMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvDateLebal"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="June 6 , 2020"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDataLebal"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="4,658"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDateLebal" />
 </androidx.constraintlayout.widget.ConstraintLayout>

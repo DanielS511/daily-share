@@ -58,4 +58,12 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+    //just for testing
+    //go to the covid activity
+    private fun goCovidActivity() {
+        val intent =  Intent(this, COVIDActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }
