@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DailyShare">
         <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity
             android:name=".COVIDActivity"
             android:exported="true" />
         <activity

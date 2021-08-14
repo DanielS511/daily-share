@@ -107,6 +107,7 @@ class CreatePostActivity : AppCompatActivity() {
                     System.currentTimeMillis(),
                     signInUser)
                 firestoreDB.collection("posts").add(post)
+
             }.addOnCompleteListener { postCreationTask ->
                 buttSubmit.isEnabled = true
                 if (!postCreationTask.isSuccessful){

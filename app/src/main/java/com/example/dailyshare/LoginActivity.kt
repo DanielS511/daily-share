@@ -5,8 +5,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.ktx.auth
@@ -50,7 +52,11 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
         }
+    }
 
+    fun goToSignUp(view: View){
+        val intent =  Intent(this, SignUpActivity::class.java)
+        startActivity(intent)
     }
 
     private fun goPostActivity() {
