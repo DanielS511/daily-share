@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/DailyShare/app/src/main/res/drawable/covid_button_default.xml" value="0.23717105263157895" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_covidactivity.xml" value="0.22" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_create_post.xml" value="0.2817028985507246" />
         <entry key="..\:/Android/DailyShare/app/src/main/res/layout/activity_login.xml" value="0.2866847826086957" />

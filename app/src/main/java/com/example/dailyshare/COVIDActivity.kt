@@ -12,6 +12,8 @@ import com.example.dailyshare.adapters.CovidSparkAdapter
 import com.example.dailyshare.models.CovidData
 import com.google.gson.GsonBuilder
 import com.robinhood.spark.SparkView
+import com.robinhood.ticker.TickerUtils
+import com.robinhood.ticker.TickerView
 import org.angmarch.views.NiceSpinner
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +43,7 @@ class COVIDActivity : AppCompatActivity() {
     private lateinit var rbMax: RadioButton
     private lateinit var sparkView: SparkView
     private lateinit var spinnerStates : NiceSpinner
+    private lateinit var tickerViewData : TickerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +59,7 @@ class COVIDActivity : AppCompatActivity() {
         rbMonth = findViewById(R.id.rbMonth)
         sparkView = findViewById(R.id.sparkviewCovidChart)
         spinnerStates = findViewById(R.id.spinnerStates)
+        tickerViewData = findViewById(R.id.tickerViewNumber)
 
 
         val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create()
@@ -117,6 +121,7 @@ class COVIDActivity : AppCompatActivity() {
         val statesList = statesNames.toMutableList()
         statesList.sort()
         statesList.add(0, NATIONAL)
+        Log.i(TAG, statesList.toString())
 
         spinnerStates.attachDataSource(statesList)
         spinnerStates.setOnSpinnerItemSelectedListener { parent, _, position, _ ->
@@ -132,6 +137,8 @@ class COVIDActivity : AppCompatActivity() {
     Get data corresponds to what user choose in radio button
      */
     private fun setUpEventListener() {
+        //Set up the ticker view with a number list
+        tickerViewData.setCharacterLists(TickerUtils.provideNumberList())
         //To add a listener which allow user to scrub on the chart
         sparkView.isScrubEnabled = true
         sparkView.setScrubListener { itemData ->
@@ -169,6 +176,7 @@ class COVIDActivity : AppCompatActivity() {
         }
         @ColorInt val colorInt = ContextCompat.getColor(this, colorShown)
         sparkView.lineColor = colorInt
+        tickerViewData.textColor = colorInt
 
         //set the status of data
         adapter.status = status
@@ -194,7 +202,7 @@ class COVIDActivity : AppCompatActivity() {
 
     //Update the date and number in the bottom of UI
     private fun updateDateData(day: CovidData) {
-        val tvData = findViewById<TextView>(R.id.tvDataLebal)
+
         val tvDate = findViewById<TextView>(R.id.tvDateLebal)
 
         val curStatus = when (adapter.status){
@@ -203,7 +211,7 @@ class COVIDActivity : AppCompatActivity() {
             ChartOptions.Status.POSITIVE -> day.positiveIncrease
         }
 
-        tvData.text = NumberFormat.getInstance().format(curStatus)
+        tickerViewData.text = NumberFormat.getInstance().format(curStatus)
         val dateFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
         tvDate.text = dateFormat.format(day.dateChecked)
     }

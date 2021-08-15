@@ -9,28 +9,14 @@
 
     <org.angmarch.views.NiceSpinner
         android:id="@+id/spinnerStates"
-        android:layout_width="0dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="8dp"
         android:contentDescription="States "
         android:ellipsize="end"
         android:maxLines="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@id/tvState"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvState"
-        app:layout_constraintTop_toTopOf="@id/tvState" />
-
-    <TextView
-        android:id="@+id/tvState"
-        android:layout_width="67dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="State"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,12 +24,12 @@
         android:id="@+id/rgStatus"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvState">
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStates">
 
         <RadioButton
             android:id="@+id/rbPositive"
@@ -69,6 +55,9 @@
         android:id="@+id/sparkviewCovidChart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="8dp"
+        android:background="#EBEEF6"
+        android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@+id/rgTimeline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +70,7 @@
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/tvDataLebal"
+        app:layout_constraintBottom_toTopOf="@+id/tickerViewNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -89,6 +78,7 @@
             android:id="@+id/rbWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="Week" />
 
         <RadioButton
@@ -108,19 +98,22 @@
         android:id="@+id/tvDateLebal"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
         android:gravity="center"
         android:text="June 6 , 2020"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/tvDataLebal"
+    <com.robinhood.ticker.TickerView
+        android:id="@+id/tickerViewNumber"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="4,658"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDateLebal" />
