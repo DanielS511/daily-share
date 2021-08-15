@@ -11,6 +11,4 @@ Take note
 
 Check weather for certain city 
 
-To be done:
-
 Check Covid-19 status 
